@@ -5,19 +5,23 @@ using UnityEngine.Animations;
 
 public class shooter : MonoBehaviour
 {
+    public CharacterController cont;
     public float potencia;
-    public float poder;
+    //public float poder;
     private Vector3 pos;
+    adminmove Points;
 
     // Start is called before the first frame update
     void Start()
     {
         pos = this.transform.position;
+        cont = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             poder = 1;
@@ -29,26 +33,34 @@ public class shooter : MonoBehaviour
         {
             this.GetComponent<Rigidbody>().AddForce(Vector3.forward * poder * potencia);
             Invoke("reinicia", 8);
-        }
+        } */
+        Vector3 direction = new Vector3(0, Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+        Vector3 Velocity = direction * potencia;
+        Velocity = transform.transform.TransformDirection(Velocity);
+        cont.Move(Velocity * Time.deltaTime);
 
-        if (Input.GetKeyUp(KeyCode.S))
+        /*if (Input.GetKeyUp(KeyCode.S))
         {
             reinicia();
-        }
+        }*/
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        GameObject.Find("manager").GetComponent<adminmove>().sumarpuntos(1);
-        Invoke("reinicia", 5);
+        //GameObject.Find("manager").GetComponent<adminmove>().sumarpuntos(1);
+        if (collision.gameObject.CompareTag("Obs"))
+        {
+            Destroy(this.gameObject);
+        }
+        // Invoke("reinicia", 5);
         this.GetComponent<SphereCollider>().enabled = false;
         //reinicia();
     }
 
-    void reinicia()
+    /*void reinicia()
     {
         this.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
         this.transform.position = pos;
         this.GetComponent<SphereCollider>().enabled = true;
-    }
+    }*/
 }
