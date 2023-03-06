@@ -16,15 +16,23 @@ public class bala : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        step = 10 * Time.deltaTime; // calculate distance to move
-        this.transform.position = Vector3.MoveTowards(this.transform.position, objetivo.transform.position, step);
+        step = 20 * Time.deltaTime; // calculate distance to move
+        if (objetivo != null) {
+            this.transform.position = Vector3.MoveTowards(this.transform.position, objetivo.transform.position, step);
+        }
+        else { return; }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "enemigo")
+        if (collision != null)
         {
-            Destroy(this.gameObject);
+            if (collision.collider.tag == "enemigo")
+            {
+                Destroy(this.gameObject);
+            }
         }
+        else { return; }
+        
     }
 }

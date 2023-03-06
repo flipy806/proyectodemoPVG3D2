@@ -28,7 +28,7 @@ public class tower : MonoBehaviour
             if (other.tag == "enemigo")
             {
                 activeEnemy = other.gameObject;
-                estado = 1;
+               estado = 1;
             }
         }
     }
@@ -36,6 +36,8 @@ public class tower : MonoBehaviour
     {
         estado = 0;
     }
+
+
     private void shoot()
     {
         GameObject nuevabala = Instantiate(bala, bala.transform.position, bala.transform.rotation);

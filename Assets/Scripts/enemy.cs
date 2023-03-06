@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class enemy : MonoBehaviour
 {
     public GameObject endPoint;
+    public float Vida = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,24 @@ public class enemy : MonoBehaviour
     {
         
     }
+    void Daño()
+    {
+        Vida = Vida - 1;
+        if (Vida == 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.name == "meta")
         {
             Destroy(this.gameObject);
+        }
+
+        if (collision.collider.tag == "Bullet")
+        {
+            Daño();
         }
     }
 

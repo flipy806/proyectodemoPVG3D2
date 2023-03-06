@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endPoint: {fileID: 182345654}
+  Vida: 3
 --- !u!136 &108229395
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -526,6 +527,7 @@ GameObject:
   - component: {fileID: 182345657}
   - component: {fileID: 182345656}
   - component: {fileID: 182345659}
+  - component: {fileID: 182345660}
   m_Layer: 0
   m_Name: meta
   m_TagString: Untagged
@@ -628,6 +630,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &182345660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182345654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5077e19749d56584fa6cb543f33b1fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vida: 5
 --- !u!1 &268300193
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,6 +1003,11 @@ MonoBehaviour:
   enemigo: {fileID: 108229393}
   enemigoGrupo: {fileID: 393017704}
   puntoInicio: {fileID: 574173315}
+  misDatos:
+    id: 0
+    nombre_juego: 
+    nombre_jugador: 
+    activo: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,7 +1269,7 @@ GameObject:
   - component: {fileID: 1043108821}
   m_Layer: 0
   m_Name: bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1406,7 +1426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
